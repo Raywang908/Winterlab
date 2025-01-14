@@ -1,0 +1,1 @@
+-top "testbench" -debug "all" -snapshot "testbench_elab" 

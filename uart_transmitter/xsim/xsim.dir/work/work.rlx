@@ -1,0 +1,7 @@
+0.7
+2020.2
+Apr 18 2022
+15:53:03
+/home/ubuntu/soclab25/uart_transmitter/hdl/baud_rate_generator.v,1736586739,verilog,,/home/ubuntu/soclab25/uart_transmitter/hdl/uart_transmitter.v,,baud_rate_generator,,,,,,,,
+/home/ubuntu/soclab25/uart_transmitter/hdl/uart_transmitter.v,1736657884,verilog,,,,uart_transmitter,,,,,,,,
+/home/ubuntu/soclab25/uart_transmitter/xsim/uart_transmitter_tb.v,1736769671,verilog,,/home/ubuntu/soclab25/uart_transmitter/hdl/baud_rate_generator.v,,testbench,,,,,,,,

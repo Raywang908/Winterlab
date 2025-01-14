@@ -1,0 +1,2 @@
+./baud_rate_generator_tb.v
+./../hdl/baud_rate_generator.v
