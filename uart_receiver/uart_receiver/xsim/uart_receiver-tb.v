@@ -6,7 +6,7 @@ parameter CYCLE = 10; // use CYCLE to describe the clock period
 parameter BAUD_RATE_NUMBER = 20;
 
 // localparam
-localparam N = 258; 
+localparam N = 256; 
 
 
 // input signal use reg
@@ -16,7 +16,7 @@ reg uart_rx;
 
 // output signal use wire
 wire baud_rate_signal;
-wire [7:0] data;
+wire [8:1] data;
 wire valid_data;
 
 
@@ -90,6 +90,7 @@ initial begin
   error = 0;
 // Use the same control technique to control when to sample output result.
   wait(rst_n==0);
+  wait(rst_n==1);
 // adder output for two cycle from input to output
   // you can also write the result to a text file
   fp_w = $fopen("answer.txt");
@@ -99,7 +100,7 @@ initial begin
     correct_data = golden[j][8:1];
     correct_valid = golden[j][0];
     send_uartrx(signal_in);
-    #(CYCLE)
+    #(CYCLE*21)
     if({data, valid_data} !== {correct_data, correct_valid}) begin
         error = error + 1;
         $display("************* Pattern No.%d is wrong at %t ************", j,$time);

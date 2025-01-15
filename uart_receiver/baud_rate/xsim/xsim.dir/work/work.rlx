@@ -2,5 +2,5 @@
 2020.2
 Apr 18 2022
 15:53:03
-/home/ubuntu/soclab25/uart_receiver/baud_rate/hdl/baud_rate_generator.v,1736303604,verilog,,,,baud_rate_generator,,,,,,,,
-/home/ubuntu/soclab25/uart_receiver/baud_rate/xsim/baud_rate_generator_tb.v,1736304059,verilog,,/home/ubuntu/soclab25/uart_receiver/baud_rate/hdl/baud_rate_generator.v,,testbench,,,,,,,,
+/home/ubuntu/soclab25/uart_receiver/baud_rate/hdl/baud_rate_generator.v,1736923925,verilog,,,,baud_rate_generator,,,,,,,,
+/home/ubuntu/soclab25/uart_receiver/baud_rate/xsim/baud_rate_generator_tb.v,1736923929,verilog,,/home/ubuntu/soclab25/uart_receiver/baud_rate/hdl/baud_rate_generator.v,,testbench,,,,,,,,

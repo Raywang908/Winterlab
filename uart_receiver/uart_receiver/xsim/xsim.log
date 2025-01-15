@@ -2,8 +2,8 @@
 # xsim v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Wed Jan  8 05:03:13 2025
-# Process ID: 180520
+# Start of session at: Wed Jan 15 02:25:12 2025
+# Process ID: 216768
 # Current directory: /home/ubuntu/soclab25/uart_receiver/uart_receiver/xsim
 # Command line: xsim -mode tcl -source {xsim.dir/testbench_elab/xsim_script.tcl}
 # Log file: /home/ubuntu/soclab25/uart_receiver/uart_receiver/xsim/xsim.log
@@ -15,6 +15,6 @@ source xsim.dir/testbench_elab/xsim_script.tcl
 Time resolution is 1 ps
 run -all
 Congratulations!! The functionality of your receiver is correct!!
-$finish called at time : 516030 ns : File "/home/ubuntu/soclab25/uart_receiver/uart_receiver/xsim/uart_receiver-tb.v" Line 120
+$finish called at time : 563230 ns : File "/home/ubuntu/soclab25/uart_receiver/uart_receiver/xsim/uart_receiver-tb.v" Line 121
 exit
-INFO: [Common 17-206] Exiting xsim at Wed Jan  8 05:03:17 2025...
+INFO: [Common 17-206] Exiting xsim at Wed Jan 15 02:25:15 2025...

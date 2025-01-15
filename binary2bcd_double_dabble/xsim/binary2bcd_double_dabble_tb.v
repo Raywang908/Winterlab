@@ -7,8 +7,6 @@ localparam N = 256;
 localparam CYCLE = 10;
 // input signal use reg
 reg [7:0] binary_in;
-reg clk;
-reg rst_n;
 
 // output signal use wire
 wire [19:0] unpacked_bcd;
@@ -21,8 +19,6 @@ integer j, error;
 // module_name #(.parameter1(5),.parameter2(3)) unit_name (.port1(...), .port2(...), ...); //
 binary2bcd_double_dabble binary2bcd_double_dabble(
 .binary_in(binary_in),
-.clk(clk),
-.rst_n(rst_n),
 .unpacked_bcd(unpacked_bcd),
 .packed_bcd(packed_bcd)
 );
@@ -44,15 +40,6 @@ initial begin
   $readmemb("golden.dat",golden);
 end
 
-always #(CYCLE/2) clk = ~clk; 
-always #(CYCLE) rst_n = ~rst_n;
-
-// System block set only clock,reset signal and the timeout finish. 
-initial begin
-  clk = 1;
-  rst_n = 1;
-  // system reset
-end
 
 // output result checking block, control when to sample and verify the result.
 integer fp_w;
@@ -67,7 +54,6 @@ initial begin
   // you can also write the result to a text file
   fp_w = $fopen("answer.txt");
   for (j = 0; j < N; j = j + 1) begin
-    @(negedge rst_n);
     //#(CYCLE);
     binary_in = golden[j][39:32];
     correct_data_packed = golden[j][31:20];

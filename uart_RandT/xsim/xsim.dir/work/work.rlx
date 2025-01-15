@@ -2,7 +2,7 @@
 2020.2
 Apr 18 2022
 15:53:03
-/home/ubuntu/soclab25/uart_RandT/hdl/baud_rate_generator.v,1736649761,verilog,,/home/ubuntu/soclab25/uart_RandT/hdl/uart_transmitter.v,,baud_rate_generator,,,,,,,,
-/home/ubuntu/soclab25/uart_RandT/hdl/uart_receiver.v,1736657575,verilog,,,,uart_receiver,,,,,,,,
-/home/ubuntu/soclab25/uart_RandT/hdl/uart_transmitter.v,1736651293,verilog,,/home/ubuntu/soclab25/uart_RandT/hdl/uart_receiver.v,,uart_transmitter,,,,,,,,
-/home/ubuntu/soclab25/uart_RandT/xsim/uart_RandT_tb.v,1736769763,verilog,,/home/ubuntu/soclab25/uart_RandT/hdl/baud_rate_generator.v,,testbench,,,,,,,,
+/home/ubuntu/soclab25/uart_RandT/hdl/baud_rate_generator.v,1736922580,verilog,,/home/ubuntu/soclab25/uart_RandT/hdl/uart_transmitter.v,,baud_rate_generator,,,,,,,,
+/home/ubuntu/soclab25/uart_RandT/hdl/uart_receiver.v,1736922580,verilog,,,,uart_receiver,,,,,,,,
+/home/ubuntu/soclab25/uart_RandT/hdl/uart_transmitter.v,1736923490,verilog,,/home/ubuntu/soclab25/uart_RandT/hdl/uart_receiver.v,,uart_transmitter,,,,,,,,
+/home/ubuntu/soclab25/uart_RandT/xsim/uart_RandT_tb.v,1736923117,verilog,,/home/ubuntu/soclab25/uart_RandT/hdl/baud_rate_generator.v,,testbench,,,,,,,,

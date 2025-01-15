@@ -1,5 +1,5 @@
 $date
-   Tue Jan  7 21:41:15 2025
+   Wed Jan 15 01:52:16 2025
 $end
 $version
   2022.1
@@ -21,6 +21,7 @@ $var wire 1 ) clk $end
 $var wire 1 * rst_n $end
 $var reg 1 + baud_rate_signal $end
 $var reg 14 , counter [13:0] $end
+$var reg 1 - baud_rate_next $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
@@ -28,7 +29,7 @@ $enddefinitions $end
 $dumpvars
 1!
 1"
-0#
+x#
 bx $
 bx %
 bx &
@@ -36,8 +37,9 @@ b0 '
 bx (
 1)
 1*
-0+
+x+
 bx ,
+x-
 $end
 #5000
 0!
@@ -45,6 +47,7 @@ $end
 #10000
 1!
 0"
+0#
 b10100010101111 $
 b0 &
 b10 (
@@ -52,6 +55,7 @@ b10 (
 0*
 0+
 b10100010101111 ,
+0-
 #15000
 0!
 0)
@@ -104204,6 +104208,7 @@ b10100010101111 &
 1)
 0+
 b0 ,
+1-
 #104165000
 0!
 0)
@@ -104215,6 +104220,7 @@ b10100010110000 &
 1)
 1+
 b10100010101111 ,
+0-
 #104175000
 0!
 0)
