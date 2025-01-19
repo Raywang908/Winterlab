@@ -1,10 +1,10 @@
-module baud_rate_generator (
+module baud_rate_generator_T (
   input wire clk,                  // Clock signal
   input wire rst_n,                // Reset signal (active low)
   output reg baud_rate_signal      // Baud rate output signal
 );
 
-  parameter BAUD_RATE_NUMBER = 20; // Parameter for the baud rate timing
+  parameter BAUD_RATE_NUMBER = 1000; // Parameter for the baud rate timing
   reg baud_rate_next;              // Temporary storage for the next baud rate signal (combinational logic)
   reg [13:0] counter;              // Counter to track baud rate timing
   reg [13:0] next_counter;         // Temporary storage for the next counter value

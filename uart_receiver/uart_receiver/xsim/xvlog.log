@@ -1,6 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/soclab25/uart_receiver/uart_receiver/xsim/uart_receiver-tb.v" into library work
-INFO: [VRFC 10-311] analyzing module testbench
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/soclab25/uart_receiver/uart_receiver/hdl/baud_rate_generator.v" into library work
-INFO: [VRFC 10-311] analyzing module baud_rate_generator
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/soclab25/uart_receiver/uart_receiver/hdl/uart_receiver.v" into library work
-INFO: [VRFC 10-311] analyzing module uart_receiver

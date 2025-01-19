@@ -1,66 +1,70 @@
 module uart_transmitter (
-  input wire [7:0] data,            // 輸入的 8-bit 資料
-  input wire baud_rate_signal,      // 波特率訊號
-  input wire start,                 // 傳輸開始訊號
-  input wire rst_n,                 // 復位訊號（低有效）
-  input wire clk,                   // 時鐘訊號
-  output reg uart_tx                // UART 資料輸出
+  input wire [7:0] data,            // Input 8-bit data to be transmitted
+  input wire baud_rate_signal,      // Baud rate signal to synchronize transmission
+  input wire start,                 // Signal to start the transmission
+  input wire rst_n,                 // Reset signal (active low)
+  input wire clk,                   // Clock signal
+  output reg uart_tx                // UART data output
 );
 
-  reg [10:0] packed_data;           // 打包的 10-bit 資料（起始位、數據位、停止位）
-  reg state, next_state;            // 狀態與下一狀態
-  reg [3:0] bit_counter, next_bit_counter; // 位元計數器和下一值
-  reg next_uart_tx;                 // 下一時鐘週期的輸出狀態
-  localparam IDLE = 1'b0;
-  localparam TRANSMIT = 1'b1;
+  reg [10:1] packed_data;           // Packed 10-bit data (start bit, 8 data bits, stop bit)
+  reg state, next_state;            // Current state and next state
+  reg [3:0] bit_counter, next_bit_counter; // Counter to track the current bit and its next value
+  reg next_uart_tx;                 // Output for the next clock cycle
+  localparam IDLE = 1'b0;           // Idle state
+  localparam TRANSMIT = 1'b1;       // Transmit state
 
-  // 狀態切換與資料更新邏輯（時序邏輯）
+  // Sequential logic: state transition and data updates
   always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
-      state <= IDLE;
-      bit_counter <= 4'd10;
-      uart_tx <= 1'b1;              // 默認為高電平
-      packed_data <= 11'b0;         // 默認為空
+      state <= IDLE;                // Initialize to IDLE state on reset
+      bit_counter <= 4'd10;         // Default bit counter to 10 bits
+      uart_tx <= 1'b1;              // Default UART output is high (idle state)
+      packed_data <= 11'b0;         // Clear packed data
     end else begin
-      state <= next_state;
-      bit_counter <= next_bit_counter;
-      uart_tx <= next_uart_tx;
-      if (start && state == IDLE) begin
-        packed_data <= {1'b0, data, 1'b1}; // 起始位（0）+ 資料 + 停止位（1）
-      end
+      state <= next_state;          // Update to the next state
+      bit_counter <= next_bit_counter; // Update bit counter
+      uart_tx <= next_uart_tx;      // Update UART output
     end
   end
 
-  // 組合邏輯：計算下一狀態與輸出
+  // Combinational logic: calculate next state and outputs
   always @(*) begin
-    // 預設值
-    next_state = state;
-    next_bit_counter = bit_counter;
-    next_uart_tx = uart_tx;
-
+    packed_data = {1'b0, data, 1'b1}; // Pack the data with start and stop bits
     case (state)
       IDLE: begin
-        next_uart_tx = 1'b1;        // 默認為高電平
+        next_uart_tx = 1'b1;        // Default to high (idle state)
         if (start) begin
-          next_state = TRANSMIT;
-          next_bit_counter = 4'd10;
+          next_state = TRANSMIT;   // Transition to TRANSMIT state on start signal
+          next_bit_counter = 4'd10; // Reset bit counter to 10 bits
+        end else begin
+          next_state = IDLE;       // Remain in IDLE state
+          next_bit_counter = bit_counter; // Keep current bit counter
         end
       end
 
       TRANSMIT: begin
-        if (baud_rate_signal) begin
+        if (baud_rate_signal) begin // Check baud rate signal for synchronization
           if (bit_counter == 0) begin
-            next_state = IDLE;      // 傳輸完成，回到空閒狀態
-            next_uart_tx = 1'b1;    // 停止位為高電平
+            next_state = IDLE;     // Transmission complete, go to IDLE state
+            next_bit_counter = bit_counter; // Keep current bit counter
+            next_uart_tx = uart_tx; // Maintain current output
           end else begin
-            next_bit_counter = bit_counter - 1;
-            next_uart_tx = packed_data[bit_counter - 1]; // 輸出當前位元
+            next_uart_tx = packed_data[bit_counter]; // Output the current bit
+            next_bit_counter = bit_counter - 1; // Decrement bit counter
+            next_state = TRANSMIT; // Remain in TRANSMIT state
           end
+        end else begin
+          next_state = state;      // Keep current state if no baud rate signal
+          next_bit_counter = bit_counter; // Keep current bit counter
+          next_uart_tx = uart_tx;  // Maintain current output
         end
       end
 
       default: begin
-        next_state = IDLE;
+        next_state = state;        // Default to current state
+        next_bit_counter = bit_counter; // Default to current bit counter
+        next_uart_tx = uart_tx;    // Default to current output
       end
     endcase
   end

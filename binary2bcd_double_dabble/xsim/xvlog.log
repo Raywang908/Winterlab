@@ -1,4 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/soclab25/binary2bcd_double_dabble/xsim/binary2bcd_double_dabble_tb.v" into library work
-INFO: [VRFC 10-311] analyzing module testbench
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/ubuntu/soclab25/binary2bcd_double_dabble/hdl/binary2bcd_double_dabble.v" into library work
-INFO: [VRFC 10-311] analyzing module binary2bcd_double_dabble
